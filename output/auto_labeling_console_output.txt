@@ -1,0 +1,17 @@
+======================================================================
+LEGISLATIVE ASSEMBLY AUTOMATED COMPLIANCE LABEL EXTRACTION
+======================================================================
+File Checked: leadership_pack_draft.txt
+└─ Assigned Label: RESTRICTED
+└─ Descriptor:     PROCEEDINGS
+└─ Logic Rule:     Contains active in camera committee context, unpublished financials, or named executive distribution rules.
+----------------------------------------------------------------------
+File Checked: media_release_approved.txt
+└─ Assigned Label: PUBLIC
+└─ Logic Rule:     Explicitly approved for external publication to the public Assembly website.
+----------------------------------------------------------------------
+File Checked: procurement_card_review.txt
+└─ Assigned Label: CONFIDENTIAL
+└─ Descriptor:     AUDIT
+└─ Logic Rule:     Internal review document detailing unfinalized operational compliance findings or transaction controls.
+----------------------------------------------------------------------
