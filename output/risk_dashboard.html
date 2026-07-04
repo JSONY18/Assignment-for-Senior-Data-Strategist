@@ -1,0 +1,44 @@
+def generate_html_dashboard_report(df, OUTPUT_DIR):
+    # Calculate key metrics for the Director
+    total_files = len(df)
+    unlabeled_count = len(df[df['corrected_label'] == 'Unlabeled'])
+    high_risk_copilot_files = len(df[df['copilot_reach_risk'] == 'HIGH RISK - Copilot Leak Vector'])
+    
+    html_content = f"""
+    <html>
+    <head>
+        <title>Copilot Risk View & Label Coverage</title>
+        <style>
+            body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; color: #2D3748; }}
+            h1 {{ color: #1A365D; border-bottom: 2px solid #1A365D; padding-bottom: 10px; }}
+            .metric-card {{ background: #F7FAFC; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); width: 250px; display: inline-block; margin-right: 20px; }}
+            .metric-value {{ font-size: 24px; font-weight: bold; color: #2B6CB0; }}
+            .high-risk {{ color: #E53E3E !important; }}
+            table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
+            th, td {{ padding: 12px; text-align: left; border-bottom: 1px solid #E2E8F0; }}
+            th {{ background-color: #1A365D; color: white; }}
+        </style>
+    </head>
+    <body>
+        <h1>Legislative Assembly of BC — Copilot Readiness Risk Dashboard</h1>
+        <p><strong>Status:</strong> Post-Data Verification and Cleanup</p>
+        
+        <div>
+            <div class="metric-card">
+                <div class="metric-value">{unlabeled_count}</div>
+                <div>Unlabeled Files Scan Count</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value high-risk">{high_risk_copilot_files}</div>
+                <div>Active Copilot Leak Vectors Found</div>
+            </div>
+        </div>
+
+        <h2>🚨 High-Risk Vulnerability Areas (Open Shares Containing Sensitive Data)</h2>
+        <p>These documents represent files where Copilot can surface private data to unintended staff members because access controls are too broad and proper encryption labels have not been mapped yet.</p>
+        <!-- Data summary tables go here -->
+    </body>
+    </html>
+    """
+    with open(f"{OUTPUT_DIR}/risk_dashboard.html", "w") as f:
+        f.write(html_content)
