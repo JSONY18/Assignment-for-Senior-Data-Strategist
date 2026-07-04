@@ -18,7 +18,7 @@ The script relies on relative pathing (`__file__`) and expects the following dir
 └── src/
     └── label_map.py
 │   ├──label_coverage_copilot_risk.py
-│   ├── pii_detections.csv
+│   ├── auto-labelling.py
 └── output/
     └── copilot_risks.png
 │   ├── label_coverage.png
